@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f1f0eb">
+  <title>恰好一秒 · 你的直觉，值几毫秒？</title>
+  <meta name="description" content="按住，凭感觉在 1.000 秒松手。一个忍不住再玩一次的手感挑战。AMZ @AmzTjh34230 出品。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="恰好一秒 · 你的直觉，值几毫秒？">
+  <meta property="og:description" content="按住，凭感觉在 1.000 秒松手。来挑战 AMZ 的一秒。">
+  <meta property="og:image" content="https://yns34-hub.github.io/one-second/cover.png">
+  <meta property="og:url" content="https://yns34-hub.github.io/one-second/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@AmzTjh34230">
+  <link rel="canonical" href="https://yns34-hub.github.io/one-second/">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="恰好一秒首页"><span class="brand-mark">1.</span><span>恰好一秒<small>ONE SECOND</small></span></a>
+    <div class="nav-actions"><button id="rules-open" class="text-button">怎么玩</button><button id="theme-toggle" class="text-button" aria-label="切换明暗主题">深色</button><a href="https://x.com/AmzTjh34230" target="_blank" rel="noopener noreferrer" class="creator-link">by AMZ ↗</a></div>
+  </header>
+
+  <main>
+    <section class="playground" aria-labelledby="headline">
+      <div class="intro">
+        <p class="eyebrow">一个关于直觉的小实验</p>
+        <h1 id="headline">你以为的<span class="accent">一秒。</span><br>真的是一秒？</h1>
+        <p class="intro-copy">按住按钮，凭感觉在 <strong>1.000 秒</strong>松手。<br>没有倒计时，只有你和你的手感。</p>
+        <div class="target-line"><span class="mono target-number">1.000<span>s</span></span><span class="target-caption">唯一目标<br>JUST FEEL IT.</span></div>
+        <div id="challenge-banner" class="challenge-banner" hidden></div>
+        <p class="desktop-hint">鼠标长按 · 手机长按 · 或按住空格键</p>
+      </div>
+
+      <div class="instrument" id="instrument" data-state="ready">
+        <div class="instrument-top mono"><span id="round-label">READY WHEN YOU ARE</span><span id="attempt-counter">TRY 01</span></div>
+        <div class="dial-shell">
+          <div class="dial-ticks" aria-hidden="true"></div>
+          <span class="dial-label label-top mono">0</span><span class="dial-label label-right mono">.25</span><span class="dial-label label-bottom mono">.50</span><span class="dial-label label-left mono">.75</span>
+          <div class="dial-hand" aria-hidden="true"></div>
+          <button class="hold-pad" id="hold-pad" aria-describedby="pad-hint" aria-label="按住按钮，感觉过了一秒后松开">
+            <span class="pad-arrow" aria-hidden="true">↘</span><span id="pad-title">按住这里</span><span class="pad-sub" id="pad-sub">HOLD. FEEL. RELEASE.</span>
+          </button>
+        </div>
+        <p id="pad-hint" class="pad-hint">准备好就按住，松手见分晓。</p>
+        <div class="instrument-bottom mono"><span>NO CLOCK. ALL INSTINCT.</span><span>AMZ / 1s</span></div>
+      </div>
+    </section>
+
+    <section id="result" class="result" aria-label="本次挑战成绩" hidden>
+      <div class="result-main" aria-live="polite" aria-atomic="true">
+        <div class="result-heading"><span id="result-badge" class="result-badge">手感鉴定</span><span class="mono" id="result-side">稍微早了一点</span></div>
+        <div class="result-time mono"><span id="result-time">1.000</span><small>s</small></div>
+        <div class="result-caption"><h2 id="result-title">时间感大师</h2><p id="result-copy">你的手感，刚刚和时间对上了。</p><button id="retry" class="text-button retry-button">再试一秒 ↑</button></div>
+      </div>
+      <div class="result-detail">
+        <div class="error-readout"><span>距离一秒，只差</span><strong class="mono"><span id="result-error">0</span><small> ms</small></strong></div>
+        <p class="comparison" id="comparison">再来一次，看看能不能更接近。</p>
+        <div class="share-actions"><a id="share-x" class="button primary" href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer">分享到 X ↗</a><button id="save-card" class="button secondary">保存成绩卡 ↓</button><button id="copy-link" class="text-button copy-button">复制我的挑战链接</button></div>
+        <p id="share-status" class="share-status" role="status"></p>
+      </div>
+    </section>
+
+    <section class="session-strip" aria-label="当前设备的挑战记录">
+      <div class="best-record"><span class="record-label">你的最佳手感</span><strong class="mono" id="best-score">还差第一次</strong></div>
+      <div class="recent-record"><span class="record-label">最近几次</span><div class="recent-values mono" id="recent-values">等你留下第一个数字。</div></div>
+      <button id="clear-records" class="text-button" hidden>清空记录</button>
+    </section>
+
+    <section class="closing"><p>有些一秒很长。<br><span>比如，等朋友来破你的纪录。</span></p><a href="https://x.com/AmzTjh34230" target="_blank" rel="noopener noreferrer">找 AMZ 聊两句 ↗<span>@AmzTjh34230</span></a></section>
+  </main>
+  <footer><span>只为好玩。成绩仅保存在当前浏览器。</span><span>测量精度受设备和浏览器影响。</span></footer>
+
+  <dialog id="rules-dialog" aria-labelledby="rules-title"><button id="rules-close" class="dialog-close text-button" aria-label="关闭玩法说明">关闭 ×</button><p class="eyebrow">用直觉，别用秒表</p><h2 id="rules-title">一秒，交给手感。</h2><ol><li>按住圆形按钮，开始计时。</li><li>感觉过了整整一秒，就松手。</li><li>偏差越小，手感越准。再试随时按住。</li></ol><p>电脑也可以按住空格或 Enter。支持触屏与键盘操作。按压期间不会显示时间进度。</p><p>分享链接携带你的本次成绩，朋友可以挑战。没有联网排行榜，也不需要登录。</p><div class="grade-list"><span>≤ 5ms<br><b>时间本尊</b></span><span>≤ 20ms<br><b>人形原子钟</b></span><span>≤ 50ms<br><b>手感天花板</b></span><span>≤ 100ms<br><b>一秒老熟人</b></span></div></dialog>
+  <dialog id="card-dialog" aria-labelledby="card-dialog-title"><button id="card-close" class="dialog-close text-button">关闭 ×</button><h2 id="card-dialog-title">长按图片保存</h2><p>也可以截图，把手感带回时间线。</p><img id="card-image" alt="本次恰好一秒挑战成绩卡"></dialog>
+</body>
+</html>
